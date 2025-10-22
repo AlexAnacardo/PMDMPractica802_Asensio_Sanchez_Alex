@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ActivityAñadir"></activity>
+        <activity android:name=".ActivityListar"></activity>
     </application>
 
 </manifest>

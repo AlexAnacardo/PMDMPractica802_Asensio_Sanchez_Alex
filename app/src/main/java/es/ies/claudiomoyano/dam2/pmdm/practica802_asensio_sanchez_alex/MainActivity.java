@@ -1,6 +1,9 @@
 package es.ies.claudiomoyano.dam2.pmdm.practica802_asensio_sanchez_alex;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,26 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button botonAñadir = findViewById(R.id.buttonAñadir);
+        Button botonListar = findViewById(R.id.buttonListar);
+
+        botonAñadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAñadir = new Intent(MainActivity.this, ActivityAñadir.class);
+                startActivity(intentAñadir);
+            }
+        });
+
+
+        botonListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentListar = new Intent(MainActivity.this, ActivityAñadir.class);
+                startActivity(intentListar);
+            }
         });
     }
 }
