@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,13 +26,39 @@ public class ActivityAñadir extends AppCompatActivity {
         botonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityAñadir.this, MainActivity.class);
-                startActivity(intent);
+
+                if(dni.length()!=9){
+                    Toast.makeText(ActivityAñadir.this, "El DNI no tiene una longitud valida", Toast.LENGTH_LONG).show();
+                }
+                else if(validarDni(dni.getText().toString())){
+
+                    Usuario usuario = new Usuario(nombre.getText().toString(), apellidos.getText().toString(), Integer.parseInt(edad.getText().toString()), dni.getText().toString(), telefono.getText().toString(), "A");
+
+                    ListadoUsuarios.añadirUsuario(usuario);
+
+                    Toast.makeText(ActivityAñadir.this, "Usuario añadido", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(ActivityAñadir.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(ActivityAñadir.this, "La letra del DNI es incorrecta", Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
     }
 
     private boolean validarDni(String dni){
-        return true;
+        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+        if (!dni.matches("\\d{8}[A-Za-z]")) return false;
+
+        int numero = Integer.parseInt(dni.substring(0, 8));
+        char letra = Character.toUpperCase(dni.charAt(8));
+        char letraCorrecta = letras.charAt(numero % 23);
+
+        return letra == letraCorrecta;
     }
 }
