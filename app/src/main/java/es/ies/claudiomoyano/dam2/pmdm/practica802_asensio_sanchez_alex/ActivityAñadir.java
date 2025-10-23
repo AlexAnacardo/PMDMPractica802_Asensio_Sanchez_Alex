@@ -3,8 +3,10 @@ package es.ies.claudiomoyano.dam2.pmdm.practica802_asensio_sanchez_alex;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,14 @@ public class ActivityAñadir extends AppCompatActivity {
         EditText edad = findViewById(R.id.etEdad);
         EditText dni = findViewById(R.id.etDni);
         EditText telefono = findViewById(R.id.etTelefono);
+        Spinner spinnerProvincia = findViewById(R.id.spinnerProvincia);
+
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.lista_provincias, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerProvincia.setAdapter(adapter);
+
 
         Button botonAceptar = findViewById(R.id.botonAceptar);
 
@@ -34,7 +44,9 @@ public class ActivityAñadir extends AppCompatActivity {
                 }
                 else if(validarDni(dni.getText().toString())){
 
-                    Usuario usuario = new Usuario(nombre.getText().toString(), apellidos.getText().toString(), Integer.parseInt(edad.getText().toString()), dni.getText().toString(), telefono.getText().toString(), "A");
+                    String provinciaSeleccionada = spinnerProvincia.getSelectedItem().toString();
+
+                    Usuario usuario = new Usuario(nombre.getText().toString(), apellidos.getText().toString(), Integer.parseInt(edad.getText().toString()), dni.getText().toString(), telefono.getText().toString(), provinciaSeleccionada);
 
                     ListadoUsuarios.añadirUsuario(usuario);
 

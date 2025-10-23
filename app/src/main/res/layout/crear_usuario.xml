@@ -68,14 +68,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/botonAceptar" />
 
+
+    <Spinner
+        android:id="@+id/spinnerProvincia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etTelefono"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/botonAceptar" />
+
+
     <Button
         android:id="@+id/botonAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/botonAceptar"
-        app:layout_constraintTop_toTopOf="@id/etTelefono"
+        app:layout_constraintTop_toBottomOf="@id/spinnerProvincia"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
