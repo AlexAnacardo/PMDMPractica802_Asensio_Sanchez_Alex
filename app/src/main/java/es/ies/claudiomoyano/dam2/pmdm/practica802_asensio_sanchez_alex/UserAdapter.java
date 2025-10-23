@@ -27,7 +27,7 @@ public class UserAdapter extends ArrayAdapter<Usuario> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        // Reutilizamos o inflamos la vista
+
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
         }

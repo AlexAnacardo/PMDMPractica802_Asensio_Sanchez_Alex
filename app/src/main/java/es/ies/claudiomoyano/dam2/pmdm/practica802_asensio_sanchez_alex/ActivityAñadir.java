@@ -26,8 +26,10 @@ public class ActivityAñadir extends AppCompatActivity {
         botonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(dni.length()!=9){
+                if(telefono.length()!=9){
+                    Toast.makeText(ActivityAñadir.this, "Telefono no valido", Toast.LENGTH_LONG).show();
+                }
+                else if(dni.length()!=9){
                     Toast.makeText(ActivityAñadir.this, "El DNI no tiene una longitud valida", Toast.LENGTH_LONG).show();
                 }
                 else if(validarDni(dni.getText().toString())){
